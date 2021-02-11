@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-const LinkForm = () => {
+interface Props {
+  apiBaseUrl: string;
+}
+
+const LinkForm: React.FC<Props> = () => {
   const [link, setLink] = useState<string>('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
