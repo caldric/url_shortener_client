@@ -6,13 +6,16 @@ interface Link {
   url: string;
 }
 
-const LinkList = () => {
+interface Props {
+  apiBaseUrl: string;
+}
+
+const LinkList: React.FC<Props> = ({ apiBaseUrl }) => {
   const [links, setLinks] = useState<Link[]>([]);
-  const baseUrl: string = 'http://localhost:8080';
 
   useEffect(() => {
     const getLinks = async (): Promise<void> => {
-      const { data } = await axios.get(baseUrl);
+      const { data } = await axios.get(apiBaseUrl);
       setLinks(data);
     };
 
@@ -23,7 +26,7 @@ const LinkList = () => {
     <div>
       <ul>
         {links.map((link) => {
-          const shortenedUrl = `${baseUrl}/${link._id}`;
+          const shortenedUrl = `${apiBaseUrl}/${link._id}`;
           return (
             <li key={link._id}>
               <div>
