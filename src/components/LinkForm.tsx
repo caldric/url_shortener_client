@@ -29,6 +29,7 @@ const LinkForm: React.FC<Props> = ({ apiBaseUrl, links, setLinks }) => {
         placeholder="Shorten your link"
         value={link}
         onChange={(event) => setLink(event.target.value)}
+        autoComplete="off"
       />
       <button type="submit">Shorten</button>
     </form>
