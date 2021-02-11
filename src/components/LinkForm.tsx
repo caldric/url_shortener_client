@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from '../App';
 
 interface Props {
   apiBaseUrl: string;
+  links: Link[];
+  setLinks: React.Dispatch<React.SetStateAction<Link[]>>;
 }
 
-const LinkForm: React.FC<Props> = () => {
+const LinkForm: React.FC<Props> = ({ apiBaseUrl, links, setLinks }) => {
   const [link, setLink] = useState<string>('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     // Prevent refresh
     event.preventDefault();
-    console.log('Submitted with value: ', link);
+
+    // Create new link
+    const { data: newLink } = await axios.post(apiBaseUrl, { url: link });
+    setLinks([...links, newLink]);
   };
 
   return (

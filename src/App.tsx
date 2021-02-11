@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <LinkForm apiBaseUrl={apiBaseUrl} />
+      <LinkForm apiBaseUrl={apiBaseUrl} links={links} setLinks={setLinks} />
       <LinkList apiBaseUrl={apiBaseUrl} links={links} setLinks={setLinks} />
     </div>
   );
