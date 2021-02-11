@@ -20,7 +20,7 @@ const LinkList: React.FC<Props> = ({ apiBaseUrl }) => {
     };
 
     getLinks();
-  }, []);
+  }, [apiBaseUrl]);
 
   return (
     <div>
