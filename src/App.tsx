@@ -3,8 +3,14 @@ import React, { useState } from 'react';
 const App = () => {
   const [link, setLink] = useState<string>('');
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    // Prevent refresh
+    event.preventDefault();
+    console.log('Submitted with value: ', link);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         id="link"
@@ -13,7 +19,7 @@ const App = () => {
         value={link}
         onChange={(event) => setLink(event.target.value)}
       />
-      <button type="button">Shorten</button>
+      <button type="submit">Shorten</button>
     </form>
   );
 };
