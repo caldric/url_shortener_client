@@ -16,7 +16,7 @@ const LinkList: React.FC<Props> = ({ apiBaseUrl, links, setLinks }) => {
     };
 
     getLinks();
-  }, [apiBaseUrl]);
+  }, [apiBaseUrl, setLinks]);
 
   return (
     <div>
